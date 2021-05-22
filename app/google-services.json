@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "485299805598",
+    "project_id": "roujinsns",
+    "storage_bucket": "roujinsns.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:485299805598:android:7ba2c119944dfa45cc4a8f",
+        "android_client_info": {
+          "package_name": "com.example.roujinsns"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "485299805598-nev30q67jn8qbplqn6vo03vuimel5473.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXQT8g-RVqrUvHsF57vB12r3Lk7JMR8QE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "485299805598-nev30q67jn8qbplqn6vo03vuimel5473.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -16,21 +16,19 @@ class MainActivity : AppCompatActivity() {
 
 
         button.setOnClickListener {
-            Intent(application, NikkiActivity::class.java)
+          val intent =Intent(application, NikkiActivity::class.java)
             startActivity(intent)
-            finish()
 
         }
-        button2.setOnClickListener {
-            Intent(application, FamilyActivity::class.java)
-            startActivity(intent)
-            finish()
-
-        }
+//        button2.setOnClickListener {
+//            Intent(application, FamilyActivity::class.java)
+//            startActivity(intent)
+//
+//
+//        }
         button3.setOnClickListener {
-            Intent(application, SetteiActivity::class.java)
+            val intent = Intent(application, SetteiActivity::class.java)
             startActivity(intent)
-            finish()
 
         }
     }
