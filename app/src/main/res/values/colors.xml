@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="back">#DDFBE194</color>
+    <color name="back1">#D16ED343</color>
+    <color name="back2">#9A73F8ED</color>
+    <color name="back3">#97F37A7E</color>
+    <color name="mojicolor">#DD3A3937</color>
+    <color name="flamestyle2">
+        <!-- 背景色 -->
+        <solid android:color="#D16ED343" />
+        <!-- 角の丸み -->
+        <corners android:radius="18dp" />
+        <!-- 枠線 width:線の幅、color:線の色 -->
+        <stroke
+            android:width="3dp"
+            android:color="#4d5050" />
+    </color>
+
+
+</resources>
