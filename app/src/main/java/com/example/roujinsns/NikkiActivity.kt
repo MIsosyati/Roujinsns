@@ -8,8 +8,9 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
+import com.google.firebase.firestore.FirebaseFirestore
 import java.time.LocalDate
-import java.time.LocalDateTime
+import java.util.*
 
 
 class NikkiActivity : AppCompatActivity() {
@@ -21,9 +22,10 @@ class NikkiActivity : AppCompatActivity() {
         val localDateTime = LocalDate.now()
         textclock.setText(localDateTime.toString())
         val savebutton =findViewById<Button>(R.id.savebutton)
-        data class Task(val id:String, val name:String, val edittext:String,val date:String)
+        val database : FirebaseFirestore= FirebaseFirestore.getInstance()
 
         savebutton.setOnClickListener{
+
 
         }
     }
