@@ -5,6 +5,7 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
@@ -23,8 +24,14 @@ class NikkiActivity : AppCompatActivity() {
         textclock.setText(localDateTime.toString())
         val savebutton =findViewById<Button>(R.id.savebutton)
         val database : FirebaseFirestore= FirebaseFirestore.getInstance()
+        val editText = findViewById<EditText>(R.id.editText)
 
         savebutton.setOnClickListener{
+            val nikki = hashMapOf(
+                "name" to editText,
+                "date" to textclock,
+               "content" to editText
+            )
 
 
         }

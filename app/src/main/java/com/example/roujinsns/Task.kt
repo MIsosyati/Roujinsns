@@ -1,9 +1,12 @@
 package com.example.roujinsns
 
+import android.widget.EditText
 import java.util.*
 
-data class Task(val id:String, val name:String, val edittext:String,val date:String){
-    companion object {
-        fun create(name: String): Task = Task(UUID.randomUUID().toString(),edittext,date)
-    }
-}
+public class diary(
+   val name: String? = null,
+   val date: String? = null,
+   val content: String? = null
+
+
+)
