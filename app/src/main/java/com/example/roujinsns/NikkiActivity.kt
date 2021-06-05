@@ -1,9 +1,11 @@
 package com.example.roujinsns
 
 import android.annotation.SuppressLint
+import android.nfc.Tag
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
@@ -33,10 +35,12 @@ class NikkiActivity : AppCompatActivity() {
                 "content" to editText
             )
 
+
             db.collection("cities").document("LA")
-                .set(city)
-                .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
-                .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
+                .set(nikki)
+                .addOnSuccessListener { Log.d(Tag, "DocumentSnapshot successfully written!") }
+                .addOnFailureListener { e -> Log.w(Tag, "Error writing document", e) }
+
         }
 
 
