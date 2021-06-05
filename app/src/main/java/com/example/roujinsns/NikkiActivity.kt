@@ -26,12 +26,19 @@ class NikkiActivity : AppCompatActivity() {
         val database : FirebaseFirestore= FirebaseFirestore.getInstance()
         val editText = findViewById<EditText>(R.id.editText)
 
-        savebutton.setOnClickListener{
+        savebutton.setOnClickListener {
             val nikki = hashMapOf(
                 "name" to editText,
                 "date" to textclock,
-               "content" to editText
+                "content" to editText
             )
+
+            db.collection("cities").document("LA")
+                .set(city)
+                .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
+                .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
+        }
+
 
 
         }
