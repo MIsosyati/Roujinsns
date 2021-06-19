@@ -28,36 +28,40 @@ class NikkiActivity : AppCompatActivity() {
         val savebutton =findViewById<Button>(R.id.savebutton)
         val database : FirebaseFirestore= FirebaseFirestore.getInstance()
         val editText = findViewById<EditText>(R.id.editText)
+        val editcontent = findViewById<EditText>(R.id.editcontent)
 
 
         savebutton.setOnClickListener {
             val nikki = hashMapOf(
-                "name" to editText,
-                "date" to textclock,
-                "content" to editText
+                "name" to editText.text.toString(),
+                "date" to textclock.text.toString(),
+                "content" to editcontent.text.toString()
             )
 
-
-            database.collection("diaries").document("page")
-                .set(nikki)
-                .addOnSuccessListener { Log.d("Tag", "DocumentSnapshot successfully written!") }
-                .addOnFailureListener { e -> Log.w("Tag", "Error writing document", e) }
-
-        }
-        val kousin= database.collection("cities").document("DC")
-        kousin
-            .update("capital", true)
-            .addOnSuccessListener { Log.d("TAG", "DocumentSnapshot successfully updated!") }
-            .addOnFailureListener { e -> Log.w("TAG", "Error updating document", e) }
+            database.collection("diaries")
+                .add(nikki)
+                .addOnSuccessListener { documentReference ->
+                    Log.d("TAG", "DocumentSnapshot written with ID: ${documentReference.id}")
+                    finish()
+                }
+                .addOnFailureListener { e ->
+                    Log.w("TAG", "Error adding document", e)
+                }
 
 
-
+//            database.collection("diaries").document("page")
+//                .set(nikki)
+//                .addOnSuccessListener { Log.d("Tag", "DocumentSnapshot successfully written!")
+//                    finish()
+//                }
+//                .addOnFailureListener { e -> Log.w("Tag", "Error writing document", e) }
+//
+       }
+//        val kousin= database.collection("cities").document("DC")
+//        kousin
+//            .update("capital", true)
+//            .addOnSuccessListener { Log.d("TAG", "DocumentSnapshot successfully updated!") }
+//            .addOnFailureListener { e -> Log.w("TAG", "Error updating document", e) }
 
     }
-
-    override fun finish() {
-        super.finish()
-    }
-    }
-
-
+}

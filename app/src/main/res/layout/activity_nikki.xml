@@ -42,15 +42,15 @@
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/border"
-        app:layout_constraintBottom_toTopOf="@+id/editTextText"
-        app:layout_constraintEnd_toEndOf="@+id/editTextText"
-        app:layout_constraintStart_toStartOf="@+id/editTextText"
+        app:layout_constraintBottom_toTopOf="@+id/editcontent"
+        app:layout_constraintEnd_toEndOf="@+id/editcontent"
+        app:layout_constraintStart_toStartOf="@+id/editcontent"
         app:layout_constraintTop_toBottomOf="@+id/editText"
         app:strokeColor="@color/black"
         app:strokeWidth="35dp" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/editcontent"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="64dp"
