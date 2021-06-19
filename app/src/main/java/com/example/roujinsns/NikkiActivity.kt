@@ -17,6 +17,7 @@ import java.util.*
 
 
 class NikkiActivity : AppCompatActivity() {
+
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +29,7 @@ class NikkiActivity : AppCompatActivity() {
         val database : FirebaseFirestore= FirebaseFirestore.getInstance()
         val editText = findViewById<EditText>(R.id.editText)
 
+
         savebutton.setOnClickListener {
             val nikki = hashMapOf(
                 "name" to editText,
@@ -36,17 +38,26 @@ class NikkiActivity : AppCompatActivity() {
             )
 
 
-            db.collection("cities").document("LA")
+            database.collection("diaries").document("page")
                 .set(nikki)
-                .addOnSuccessListener { Log.d(Tag, "DocumentSnapshot successfully written!") }
-                .addOnFailureListener { e -> Log.w(Tag, "Error writing document", e) }
+                .addOnSuccessListener { Log.d("Tag", "DocumentSnapshot successfully written!") }
+                .addOnFailureListener { e -> Log.w("Tag", "Error writing document", e) }
 
         }
+        val kousin= database.collection("cities").document("DC")
+        kousin
+            .update("capital", true)
+            .addOnSuccessListener { Log.d("TAG", "DocumentSnapshot successfully updated!") }
+            .addOnFailureListener { e -> Log.w("TAG", "Error updating document", e) }
 
 
 
-        }
+
+    }
+
+    override fun finish() {
+        super.finish()
+    }
     }
 
 
-}
