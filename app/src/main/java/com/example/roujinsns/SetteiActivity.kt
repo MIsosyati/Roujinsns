@@ -20,20 +20,8 @@ class SetteiActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settei)
         val database : FirebaseFirestore = FirebaseFirestore.getInstance()
-        val setdiary = findViewById<RecyclerView>(R.id.diaryset)
 
-
-
-         database.collection("diaries")
-            .get()
-            .addOnSuccessListener { documents ->
-                for (document in documents) {
-                    Log.d("TAG", "${document.id} => ${document.data}")
-                }
-            }
-            .addOnFailureListener { exception ->
-                Log.w("TAG", "Error getting documents: ", exception)
-            }
+        val list = mutableListOf<databasedata>()
 
         // RecyclerView用のAdapterを作成
         adapter = RecycleAdapter(this, object: RecycleAdapter.OnItemClickListner{
@@ -47,6 +35,22 @@ class SetteiActivity : AppCompatActivity() {
             }
         })
 
+         database.collection("diaries")
+            .get()
+            .addOnSuccessListener { documents ->
+                for (document in documents) {
+                    val temp = databasedata(document.id,document.get("name").toString(), document.get("date").toString())
+                    Log.d("test", "${temp.date}, ${temp.id}, ${temp.name}")
+                    list.add(temp)
+
+                }
+
+                adapter?.setList(list)
+            }
+            .addOnFailureListener { exception ->
+                Log.w("TAG", "Error getting documents: ", exception)
+            }
+
         // RecyclerViewの変数を作成してレイアウトを決定し，上で作ったadapterをセット
         val recyclerView: RecyclerView = findViewById(R.id.diaryset)
         recyclerView.setHasFixedSize(true)
@@ -54,15 +58,5 @@ class SetteiActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
 
 
-
     }
-
-    override fun onResume() {
-        super.onResume()
-
-    }
-
-
-
-
 }

@@ -6,8 +6,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import java.util.*
 //データベースから取り出した値を入れるための変数？
-open class databasedata (
-    @PrimaryKey open var id: String = UUID.randomUUID().toString(),
-    open var name:String ="",
-    open var date:String =""
-        )
+class databasedata (
+    var id: String,
+    var name:String,
+    var date:String
+)
