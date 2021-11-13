@@ -7,39 +7,38 @@ import android.os.Bundle
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.gms.tasks.Task
-import com.google.firebase.firestore.QuerySnapshot
 
-class SetteiActivity : AppCompatActivity() {
+class ListActivity : AppCompatActivity() {
     var adapter: RecycleAdapter? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_settei)
+        setContentView(R.layout.activity_list)
         val database : FirebaseFirestore = FirebaseFirestore.getInstance()
-
+        val data = getSharedPreferences("DataSave", Context.MODE_PRIVATE)
+        val ID  = data.getString("myID", "")
         val list = mutableListOf<databasedata>()
-
+        if(ID.isNullOrBlank())  finish()
         // RecyclerView用のAdapterを作成
         adapter = RecycleAdapter(this, object: RecycleAdapter.OnItemClickListner{
             override fun onItemClick(item: databasedata) {
+
                 // SecondActivityに遷移するためのIntent
-                //val intent = Intent(applicationContext, SecondActivity::class.java)
+                val intent = Intent(applicationContext, PageActivity::class.java)
                 // RecyclerViewの要素をタップするとintentによりSecondActivityに遷移する
                 // また，要素のidをSecondActivityに渡す
-//                intent.putExtra("id", item.id)
-//                startActivity(intent)
+                intent.putExtra( "name",item.name,)
+                intent.putExtra("date",item.date)
+                intent.putExtra("content",item.content)
+                startActivity(intent)
             }
         })
 
-         database.collection("diaries")
+         database.collection(ID!!)//ここをUUIDにする
             .get()
             .addOnSuccessListener { documents ->
                 for (document in documents) {
-                    val temp = databasedata(document.id,document.get("name").toString(), document.get("date").toString())
+                    val temp = databasedata(document.id,document.get("name").toString(), document.get("date").toString(), document.get("content").toString())
                     Log.d("test", "${temp.date}, ${temp.id}, ${temp.name}")
                     list.add(temp)
 

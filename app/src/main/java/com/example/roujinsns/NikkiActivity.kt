@@ -1,6 +1,7 @@
 package com.example.roujinsns
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.nfc.Tag
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -29,6 +30,11 @@ class NikkiActivity : AppCompatActivity() {
         val database : FirebaseFirestore= FirebaseFirestore.getInstance()
         val editText = findViewById<EditText>(R.id.editText)
         val editcontent = findViewById<EditText>(R.id.editcontent)
+        val data = getSharedPreferences("DataSave", Context.MODE_PRIVATE)
+        val ID  = data.getString("myID", "")
+
+        if(ID.isNullOrBlank())  finish()
+
 
 
         savebutton.setOnClickListener {
@@ -38,7 +44,7 @@ class NikkiActivity : AppCompatActivity() {
                 "content" to editcontent.text.toString()
             )
 
-            database.collection("diaries")
+            database.collection(ID!!)
                 .add(nikki)
                 .addOnSuccessListener { documentReference ->
                     Log.d("TAG", "DocumentSnapshot written with ID: ${documentReference.id}")

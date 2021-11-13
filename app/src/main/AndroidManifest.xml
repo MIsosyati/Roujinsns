@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Roujinsns">
         <activity android:name=".PageActivity"></activity>
-        <activity android:name=".SetteiActivity" />
+        <activity android:name=".ListActivity" />
         <activity android:name=".FirstActivity" />
         <activity android:name=".FriendsActivity" />
         <activity android:name=".FamilyActivity" />

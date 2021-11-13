@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#D8FFFEF1"
     tools:context=".NikkiActivity">
 
     <TextView
@@ -27,27 +28,13 @@
         android:id="@+id/editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:ems="10"
         android:hint="題名"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/border"
-        app:layout_constraintBottom_toTopOf="@+id/editcontent"
-        app:layout_constraintEnd_toEndOf="@+id/editcontent"
-        app:layout_constraintStart_toStartOf="@+id/editcontent"
-        app:layout_constraintTop_toBottomOf="@+id/editText"
-        app:strokeColor="@color/black"
-        app:strokeWidth="35dp" />
 
     <EditText
         android:id="@+id/editcontent"
@@ -55,18 +42,18 @@
         android:layout_height="0dp"
         android:layout_marginStart="64dp"
         android:layout_marginLeft="64dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="64dp"
         android:layout_marginRight="64dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/border"
-        android:ems="10"
         android:hint="今日あったことを書いてね"
-        android:inputType="text"
+        android:inputType="textMultiLine|text"
+        android:singleLine="false"
         app:layout_constraintBottom_toTopOf="@+id/savebutton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/editText"
         app:strokeColor="@color/black"
         app:strokeWidth="2dp" />
 
@@ -74,7 +61,7 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"

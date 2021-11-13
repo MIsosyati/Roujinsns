@@ -9,5 +9,6 @@ import java.util.*
 class databasedata (
     var id: String,
     var name:String,
-    var date:String
+    var date:String,
+    var content: String
 )
