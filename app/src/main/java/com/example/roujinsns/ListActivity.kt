@@ -34,7 +34,7 @@ class ListActivity : AppCompatActivity() {
             }
         })
 
-         database.collection(ID!!)//ここをUUIDにする
+        database.collection("roujinSNS").document(ID!!).collection("diary")//ここをUUIDにする
             .get()
             .addOnSuccessListener { documents ->
                 for (document in documents) {

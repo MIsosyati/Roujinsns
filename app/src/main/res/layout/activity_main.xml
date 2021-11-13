@@ -8,16 +8,17 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:background="@color/teal_200"
         android:gravity="center"
         android:text="ようこそ!"
         android:textColor="@color/mojicolor"
-        android:textSize="55sp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="@+id/edittext1"
+        app:layout_constraintEnd_toStartOf="@+id/edittext1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -75,5 +76,20 @@
         app:layout_constraintTop_toBottomOf="@+id/button2"
         app:strokeColor="@color/black"
         app:strokeWidth="2dp" />
+
+    <EditText
+        android:id="@+id/edittext1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/teal_200"
+        android:ems="10"
+        android:hint="名前入力"
+        android:inputType="textPersonName"
+        android:padding="4dp"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColorHint= "@color/common_google_signin_btn_text_dark_pressed"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,6 +6,7 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*
@@ -15,12 +16,31 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-       val button = findViewById<Button>(R.id.button)
+        val button = findViewById<Button>(R.id.button)
         val button2 = findViewById<Button>(R.id.button2)
         val button3 = findViewById<Button>(R.id.button3)
         val data = getSharedPreferences("DataSave", Context.MODE_PRIVATE)
+        val database: FirebaseFirestore = FirebaseFirestore.getInstance()
+        val ID = data.getString("myID", "")
 
-       // val message = prefs.getString("message", "not found")
+        val editText = findViewById<EditText>(R.id.edittext1)
+
+
+        val hash = hashMapOf(
+            "name" to editText.text.toString()
+        )
+
+        database.collection("roujinSNS").document(ID!!).set(hash)
+            .addOnSuccessListener { nameadd ->
+                Log.d("TAG", "name is hozoned")
+                finish()
+            }
+            .addOnFailureListener { e ->
+                Log.w("TAG", "Error adding name", e)
+            }
+
+
+
 
 
 
