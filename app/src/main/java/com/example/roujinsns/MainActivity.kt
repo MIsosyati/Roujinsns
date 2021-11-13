@@ -19,37 +19,38 @@ class MainActivity : AppCompatActivity() {
         val button = findViewById<Button>(R.id.button)
         val button2 = findViewById<Button>(R.id.button2)
         val button3 = findViewById<Button>(R.id.button3)
-        val data = getSharedPreferences("DataSave", Context.MODE_PRIVATE)
-        val database: FirebaseFirestore = FirebaseFirestore.getInstance()
-        val ID = data.getString("myID", "")
-
         val editText = findViewById<EditText>(R.id.edittext1)
+        val database: FirebaseFirestore = FirebaseFirestore.getInstance()
 
-
-        val hash = hashMapOf(
-            "name" to editText.text.toString()
-        )
-
-        database.collection("roujinSNS").document(ID!!).set(hash)
-            .addOnSuccessListener { nameadd ->
-                Log.d("TAG", "name is hozoned")
-                finish()
-            }
-            .addOnFailureListener { e ->
-                Log.w("TAG", "Error adding name", e)
-            }
-
-
-
-
-
-
+        val data = getSharedPreferences("DataSave", Context.MODE_PRIVATE)
         if(data.getString("myID", "").isNullOrBlank()) {
             val myId = UUID.randomUUID().toString()
             val editor: SharedPreferences.Editor = data.edit()
             editor.putString("myID", myId)
             editor.apply()
         }
+
+
+
+        val ID = data.getString("myID", "")
+
+
+        val hash = hashMapOf(
+            "name" to editText.text.toString()
+        )
+
+
+
+        database.collection("roujinSNS").document(ID!!).set(hash)
+            .addOnSuccessListener { nameadd ->
+                Log.d("TAG", "name is hozoned")
+
+            }
+            .addOnFailureListener { e ->
+                Log.w("TAG", "Error adding name", e)
+            }
+
+
 
         button.setOnClickListener {
           val intent =Intent(application, NikkiActivity::class.java)
