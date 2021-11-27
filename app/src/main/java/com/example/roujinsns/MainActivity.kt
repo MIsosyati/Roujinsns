@@ -16,8 +16,7 @@ import java.util.*
 class MainActivity : AppCompatActivity() {
     var id:String? = null
     lateinit var data:SharedPreferences
-
-
+    lateinit var editText: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,13 +24,11 @@ class MainActivity : AppCompatActivity() {
         val button = findViewById<Button>(R.id.button)
         val button2 = findViewById<Button>(R.id.button2)
         val button3 = findViewById<Button>(R.id.button3)
-        val editText = findViewById<EditText>(R.id.edittext1)
+        editText = findViewById(R.id.edittext1)
 
-        val userName =editText.text.toString()
-
-        editText.setText(userName)
 
         data = getSharedPreferences("DataSave", Context.MODE_PRIVATE)
+        editText.setText(data.getString("userName", ""))
         if(data.getString("myID", "").isNullOrBlank()) {
             val myId = UUID.randomUUID().toString()
             val editor: SharedPreferences.Editor = data.edit()
@@ -65,16 +62,12 @@ class MainActivity : AppCompatActivity() {
 
         Log.d("id", id)
         if(id == null) return
-        val editText = findViewById<EditText>(R.id.edittext1)
-        val editor: SharedPreferences.Editor = data.edit()
         val userName =editText.text.toString()
 
-        if(editText.text.toString() == data.getString("userName", "")) return
-        editor.putString("userName",userName)
+        if(userName == data.getString("userName", "")) return
+        val editor: SharedPreferences.Editor = data.edit()
+        editor.putString("userName", userName)
         editor.apply()
-
-
-
 
         val database: FirebaseFirestore = FirebaseFirestore.getInstance()
 

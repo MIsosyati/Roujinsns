@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
  class RecycleAdapter(private val context: Context, private val listener: OnItemClickListner) : RecyclerView.Adapter<RecycleAdapter.MyViewHolder>() {
     //RecyclerViewが所持する表示データのリスト．Realmから引き出したListをここに設定する．
     val items: MutableList<databasedata> = mutableListOf()
+     val friendsitems:MutableList<Friendsdata> = mutableListOf()
 
     // RecyclerViewに表示するレイアウトを引数として受け取り，コード側で保持するためのクラス
     class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {

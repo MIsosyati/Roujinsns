@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Roujinsns">
-        <activity android:name=".PageActivity"></activity>
+        <activity android:name=".FriendsPageActivity"></activity>
+        <activity android:name=".PageActivity" />
         <activity android:name=".ListActivity" />
         <activity android:name=".FirstActivity" />
         <activity android:name=".FriendsActivity" />

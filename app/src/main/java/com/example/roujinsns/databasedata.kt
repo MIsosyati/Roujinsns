@@ -1,6 +1,7 @@
 package com.example.roujinsns
 
 import android.os.Bundle
+import android.text.LoginFilter
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
