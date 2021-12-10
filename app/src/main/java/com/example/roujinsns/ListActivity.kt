@@ -20,7 +20,7 @@ class ListActivity : AppCompatActivity() {
         val list = mutableListOf<databasedata>()
         if(ID.isNullOrBlank())  finish()
         // RecyclerView用のAdapterを作成
-        adapter = RecycleAdapter(this, object: RecycleAdapter.OnItemClickListner{
+        RecycleAdapter(this, object: RecycleAdapter.OnItemClickListner{
             override fun onItemClick(item: databasedata) {
 
                 // SecondActivityに遷移するためのIntent
@@ -32,7 +32,7 @@ class ListActivity : AppCompatActivity() {
                 intent.putExtra("content",item.content)
                 startActivity(intent)
             }
-        })
+        }).also { adapter = it }
 
         database.collection("roujinSNS").document(ID!!).collection("diary")//ここをUUIDにする
             .get()
